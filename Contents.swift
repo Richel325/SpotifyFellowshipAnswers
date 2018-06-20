@@ -49,7 +49,17 @@ sortByString(string: str2, pattern: patrn2)
  For s = "4[ab]", the output should be decodeString(s) = "abababab"
  For s = "2[b3[a]]", the output should be decodeString(s) = "baaabaaa" */
 
-
+func decodedString(encodedString: String) -> String {
+    //Create an empty string to store the final decoded values
+    var decodedStr = ""
+    
+    
+    
+    
+    //Print and return the decoded string to check progress
+    print(decodedStr)
+    return decodedStr
+}
 
 
 
