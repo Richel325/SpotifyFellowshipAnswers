@@ -53,7 +53,7 @@ func decodedString(encodedString: String) -> String {
     //Create an empty string to store the final decoded values
     var decodedStr = ""
     
-    
+    //We will need a way to print the same character multiple times (a positive integer)
     
     
     //Print and return the decoded string to check progress
