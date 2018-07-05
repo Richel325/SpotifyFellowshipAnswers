@@ -41,16 +41,16 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfDaysInAMonth[currentMonthIndex - 1] + firstMonthWeekDay - 1
+        return numberOfDaysInAMonth[currentMonthIndex] + firstMonthWeekDay
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = daysCollectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
-        if indexPath.item <= firstMonthWeekDay - 2 {
+        if indexPath.item <= firstMonthWeekDay - 1 {
             cell.isHidden = true
         } else {
-            let calculatedDate = indexPath.row - firstMonthWeekDay + 2
+            let calculatedDate = indexPath.row - firstMonthWeekDay + 1
             cell.isHidden = false
             cell.dateLabel.text = "\(calculatedDate)"
             if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
@@ -61,6 +61,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 //cell.dateLabel.text.backgroundColor = UIColor.white
             }
         }
+        
         return cell
     }
     
@@ -87,8 +88,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 numberOfDaysInAMonth[monthIndex] = 28
             }
         }
-        firstMonthWeekDay = firstWeekDay()
         
+        firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
     }
     
