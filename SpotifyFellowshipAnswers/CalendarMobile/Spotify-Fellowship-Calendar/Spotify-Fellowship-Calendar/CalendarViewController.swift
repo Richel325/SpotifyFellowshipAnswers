@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 
-class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var monthLabel: UILabel!
@@ -35,7 +35,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         monthLabel.text = "\(months[currentMonthIndex - 1])  \(currentYear)"
         daysCollectionView.reloadData()
         
-        if currentMonthIndex == 2 && currentYear % 4 == 0 {
+        if currentMonthIndex == 1 && currentYear % 4 == 0 {
             numberOfDaysInAMonth[currentMonthIndex - 1] = 29
         }
     }
@@ -43,7 +43,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfDaysInAMonth[currentMonthIndex] + firstMonthWeekDay
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = daysCollectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
@@ -55,10 +54,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.dateLabel.text = "\(calculatedDate)"
             if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
                 cell.isUserInteractionEnabled = false
-                //cell.dateLabel.text.backgroundColor = UIColor.lightGray
+                cell.dateLabel.backgroundColor = UIColor.clear
             } else {
-                cell.isUserInteractionEnabled = false
-                //cell.dateLabel.text.backgroundColor = UIColor.white
+                cell.isUserInteractionEnabled = true
+                //cell.dateLabel.backgroundColor = UIColor.white
             }
         }
         
@@ -66,14 +65,29 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width/7 - 8
+        let height: CGFloat = 40
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8.0
+    }
+    
+    
     
     
     //Calculate the first week day of each month
-    func firstWeekDay() -> Int {
-        let day = ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfMonth.weekday)
-        return day!
-    }
-    
+//    func firstWeekDay() -> Int {
+//        let day = ("\(currentYear)-\(currentMonthIndex)".date?.firstDayOfMonth.weekday)
+//        return day!
+//    }
+
     
     //Calculate days of the month based on the month in the months array
     func monthDidChange(monthIndex: Int, year: Int) {
@@ -89,7 +103,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
         
-        firstMonthWeekDay = firstWeekDay()
+        //firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
     }
     

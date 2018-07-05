@@ -48,26 +48,26 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-Hb-O7K">
+                            <collectionView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-Hb-O7K">
                                 <rect key="frame" x="0.0" y="135" width="375" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4DE-sc-NBn">
-                                    <size key="itemSize" width="54" height="55"/>
+                                    <size key="itemSize" width="30" height="31"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ZWF-h2-mhv" customClass="CalendarCollectionViewCell" customModule="Spotify_Fellowship_Calendar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="54" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ede-DS-GrE">
-                                                    <rect key="frame" x="22" y="15" width="11.5" height="25"/>
+                                                    <rect key="frame" x="19.5" y="9" width="11.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -77,8 +77,6 @@
                                         <constraints>
                                             <constraint firstItem="ede-DS-GrE" firstAttribute="centerY" secondItem="ZWF-h2-mhv" secondAttribute="centerY" id="35X-VQ-e8M"/>
                                             <constraint firstItem="ede-DS-GrE" firstAttribute="centerX" secondItem="ZWF-h2-mhv" secondAttribute="centerX" id="Tp9-5D-ASZ"/>
-                                            <constraint firstItem="ede-DS-GrE" firstAttribute="top" secondItem="ZWF-h2-mhv" secondAttribute="topMargin" constant="7" id="Tr6-eL-h5A"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="ede-DS-GrE" secondAttribute="bottom" constant="7" id="vhI-VG-FYH"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="ede-DS-GrE" id="Cu5-Xl-V2n"/>
@@ -90,7 +88,7 @@
                                     <outlet property="delegate" destination="KwF-qC-9Ef" id="nmN-3K-o7u"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="3ID-6C-xAO" userLabel="WeekStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="3ID-6C-xAO" userLabel="WeekStackView">
                                 <rect key="frame" x="13" y="103" width="349.5" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Su" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a95-IH-NpM">
@@ -143,10 +141,10 @@
                             <constraint firstItem="3ID-6C-xAO" firstAttribute="top" secondItem="9Ld-Ic-qq0" secondAttribute="bottom" constant="8" symbolic="YES" id="4Y8-Fl-Ipg"/>
                             <constraint firstItem="9Ld-Ic-qq0" firstAttribute="top" secondItem="b9x-8C-4lN" secondAttribute="top" constant="7" id="GUE-wn-sz6"/>
                             <constraint firstItem="KYE-NA-o71" firstAttribute="baseline" secondItem="aBD-r7-SST" secondAttribute="baseline" id="HCb-Qa-mFi"/>
-                            <constraint firstItem="9Ld-Ic-qq0" firstAttribute="centerX" secondItem="3ID-6C-xAO" secondAttribute="centerX" id="T6e-VI-RVP"/>
+                            <constraint firstItem="9Ld-Ic-qq0" firstAttribute="centerX" secondItem="3ID-6C-xAO" secondAttribute="centerX" constant="9" id="T6e-VI-RVP"/>
                             <constraint firstItem="KYE-NA-o71" firstAttribute="leading" secondItem="x6e-Rp-LX2" secondAttribute="leadingMargin" id="jdU-iW-WXn"/>
                             <constraint firstItem="3ID-6C-xAO" firstAttribute="top" secondItem="KYE-NA-o71" secondAttribute="bottom" constant="4" id="lmd-eI-vDl"/>
-                            <constraint firstItem="3ID-6C-xAO" firstAttribute="leading" secondItem="b9x-8C-4lN" secondAttribute="leading" constant="22" id="wMv-ga-PCH"/>
+                            <constraint firstItem="3ID-6C-xAO" firstAttribute="leading" secondItem="b9x-8C-4lN" secondAttribute="leading" constant="13" id="wMv-ga-PCH"/>
                             <constraint firstItem="aBD-r7-SST" firstAttribute="trailing" secondItem="x6e-Rp-LX2" secondAttribute="trailingMargin" id="yUl-pn-Oqq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b9x-8C-4lN"/>
