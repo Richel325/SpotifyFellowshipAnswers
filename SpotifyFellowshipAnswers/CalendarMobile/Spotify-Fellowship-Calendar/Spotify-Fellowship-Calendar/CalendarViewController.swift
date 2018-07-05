@@ -10,15 +10,7 @@ import UIKit
 import Foundation
 
 
-//MONTH SETUP WITH DELEGATE FUNCTION
-protocol MonthDelegate: AnyObject {
-    func monthDidChange(monthIndex: Int, year: Int)
-}
-
-
-class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MonthDelegate {
-    
-
+class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     @IBOutlet weak var monthLabel: UILabel!
@@ -28,59 +20,35 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var numberOfDaysInAMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     var currentMonthIndex = 0
     var currentYear = 0
-    var presentMonthIndex = 0
-    var presentYear = 0
     var todaysDate = 0
     var firstMonthWeekDay = 0
+    var presentMonthIndex = 0
+    var presentYear = 0
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentMonthIndex = Calendar.current.component(.month, from: Date())
         currentYear = Calendar.current.component(.year, from: Date())
-        todaysDate = Calendar.current.component(.day, fromL Date())
-        
-        //Account for leap years!
-        if currentMonthIndex == 1 && currentYear % 4 ==0 {
-            numberOfDaysInAMonth[currentMonthIndex - 1] = 29
-        }
-      
-        presentMonthIndex = currentMonthIndex
-        presentYear = currentYear
-        
-        
-        func monthDidChange(monthIndex: Int, year: Int) {
-            return currentYear
-        }
-        
-        
-        
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return numberOfDaysInAMonth[currentMonthIndex - 1] + firstMonthWeekDay - 1
-        }
-        
-        
-        
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath)
-        }
-        return cell
+        todaysDate = Calendar.current.component(.day, from: Date())
+        monthLabel.text = "\(months[currentMonthIndex - 1])  \(currentYear)"
+        daysCollectionView.reloadData()
     }
+    
     
     
     
     //Calculate the first week day of each month
     func firstWeekDay() -> Int {
-        let day = ("\(currentYear)-\(currentMonthIndex) - 1)".date?.firstDayOfMonth.weekday)!
-        return day
+        let day = ("\(currentYear)-\(currentMonthIndex)-01)".date?.firstDayOfMonth.weekday)
+        return day!
     }
     
     
     //Calculate days of the month based on the month in the months array
     func monthDidChange(monthIndex: Int, year: Int) {
-        currentMonthIndex = monthIndex + 1
+        currentMonthIndex = monthIndex
         currentYear = year
         
         //Account for leap years!
@@ -98,20 +66,29 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     
-    
-    class Month {
-        var delegate: MonthDelegate?
-
-        init(){
-            currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
-            currentYear = Calendar.current.component(.year, from: Date())
-        }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return numberOfDaysInAMonth[currentMonthIndex - 1] + firstMonthWeekDay - 1
     }
     
     
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath)
+        if indexPath.item <= firstMonthWeekDay - 2 {
+            cell.isHidden = true
+        } else {
+            let calculatedDate = indexPath.row - firstMonthWeekDay + 2
+            cell.isHidden = false
+            //cell.dateLabel.text = "\(calculatedDate)"
+            if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
+                cell.isUserInteractionEnabled = false
+                //cell.dateLabel.text.backgroundColor = UIColor.lightGray
+            } else {
+                cell.isUserInteractionEnabled = false
+                //cell.dateLabel.text.backgroundColor = UIColor.white
+            }
+        }
+        return cell
+    }
     
     
     
@@ -123,10 +100,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             currentYear -= 1
         }
         
-        monthLabel.text = "\(Month.init().months[currentMonthIndex])  \(currentYear)"
-        delegate?.monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
+        monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
+        monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
         
     }
+    
+    
     
     //NEXT MONTH - MOVE FORWARD
     @IBAction func forwardMonthButton(_ sender: Any) {
@@ -135,19 +114,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             currentMonthIndex = 0
             currentYear += 1
         }
+        monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
+        monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
     }
     
-    monthLabel.text = "\(Month.init().months[currentMonthIndex])  \(currentYear)"
-    delegate?.monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
     
 }
-
-
-
-
-
-
-
 
 
 

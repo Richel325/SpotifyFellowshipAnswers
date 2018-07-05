@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KFz-5g-X8e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ld-Ic-qq0">
-                                <rect key="frame" x="54" y="71" width="267" height="24"/>
+                                <rect key="frame" x="159.5" y="71" width="56.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -95,7 +95,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-Hb-O7K">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-Hb-O7K">
                                 <rect key="frame" x="0.0" y="135" width="375" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,7 +106,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ZWF-h2-mhv">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ZWF-h2-mhv" customClass="CalendarCollectionViewCell" customModule="Spotify_Fellowship_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -114,7 +114,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ede-DS-GrE">
-                                                    <rect key="frame" x="18" y="15" width="19" height="20"/>
+                                                    <rect key="frame" x="22" y="15" width="11.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -123,12 +123,13 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="ede-DS-GrE" firstAttribute="centerY" secondItem="ZWF-h2-mhv" secondAttribute="centerY" id="35X-VQ-e8M"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="ede-DS-GrE" secondAttribute="trailing" constant="10" id="Rlc-nS-2PO"/>
                                             <constraint firstItem="ede-DS-GrE" firstAttribute="centerX" secondItem="ZWF-h2-mhv" secondAttribute="centerX" id="Tp9-5D-ASZ"/>
                                             <constraint firstItem="ede-DS-GrE" firstAttribute="top" secondItem="ZWF-h2-mhv" secondAttribute="topMargin" constant="7" id="Tr6-eL-h5A"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="ede-DS-GrE" secondAttribute="bottom" constant="7" id="vhI-VG-FYH"/>
-                                            <constraint firstItem="ede-DS-GrE" firstAttribute="leading" secondItem="ZWF-h2-mhv" secondAttribute="leadingMargin" constant="10" id="zVv-UK-w1N"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="ede-DS-GrE" id="Cu5-Xl-V2n"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -139,12 +140,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aBD-r7-SST" firstAttribute="leading" secondItem="9Ld-Ic-qq0" secondAttribute="trailing" constant="8" symbolic="YES" id="0ba-xe-N5W"/>
                             <constraint firstItem="3ID-6C-xAO" firstAttribute="top" secondItem="9Ld-Ic-qq0" secondAttribute="bottom" constant="8" symbolic="YES" id="4Y8-Fl-Ipg"/>
                             <constraint firstItem="9Ld-Ic-qq0" firstAttribute="top" secondItem="b9x-8C-4lN" secondAttribute="top" constant="7" id="GUE-wn-sz6"/>
                             <constraint firstItem="KYE-NA-o71" firstAttribute="baseline" secondItem="aBD-r7-SST" secondAttribute="baseline" id="HCb-Qa-mFi"/>
                             <constraint firstItem="9Ld-Ic-qq0" firstAttribute="centerX" secondItem="3ID-6C-xAO" secondAttribute="centerX" id="T6e-VI-RVP"/>
-                            <constraint firstItem="9Ld-Ic-qq0" firstAttribute="leading" secondItem="KYE-NA-o71" secondAttribute="trailing" constant="8" symbolic="YES" id="Tfo-HT-NQZ"/>
                             <constraint firstItem="KYE-NA-o71" firstAttribute="leading" secondItem="x6e-Rp-LX2" secondAttribute="leadingMargin" id="jdU-iW-WXn"/>
                             <constraint firstItem="3ID-6C-xAO" firstAttribute="top" secondItem="KYE-NA-o71" secondAttribute="bottom" constant="4" id="lmd-eI-vDl"/>
                             <constraint firstItem="3ID-6C-xAO" firstAttribute="leading" secondItem="b9x-8C-4lN" secondAttribute="leading" constant="22" id="wMv-ga-PCH"/>

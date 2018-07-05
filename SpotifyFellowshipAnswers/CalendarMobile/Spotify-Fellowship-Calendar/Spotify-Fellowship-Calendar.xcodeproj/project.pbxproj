@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C32C97220EDA01E005E67BC /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C32C97120EDA01E005E67BC /* CalendarCollectionViewCell.swift */; };
 		0CA30F7620E4B07F0053CBDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA30F7520E4B07F0053CBDC /* AppDelegate.swift */; };
 		0CA30F7820E4B07F0053CBDC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA30F7720E4B07F0053CBDC /* CalendarViewController.swift */; };
 		0CA30F7B20E4B07F0053CBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7920E4B07F0053CBDC /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C32C97120EDA01E005E67BC /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CA30F7220E4B07F0053CBDC /* Spotify-Fellowship-Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotify-Fellowship-Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA30F7520E4B07F0053CBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA30F7720E4B07F0053CBDC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				0CA30F7520E4B07F0053CBDC /* AppDelegate.swift */,
 				0CA30F7720E4B07F0053CBDC /* CalendarViewController.swift */,
+				0C32C97120EDA01E005E67BC /* CalendarCollectionViewCell.swift */,
 				0CA30F7920E4B07F0053CBDC /* Main.storyboard */,
 				0CA30F7E20E4B0820053CBDC /* LaunchScreen.storyboard */,
 				0CA30F7C20E4B0820053CBDC /* Assets.xcassets */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C32C97220EDA01E005E67BC /* CalendarCollectionViewCell.swift in Sources */,
 				0CA30F7820E4B07F0053CBDC /* CalendarViewController.swift in Sources */,
 				0CA30F7620E4B07F0053CBDC /* AppDelegate.swift in Sources */,
 			);
