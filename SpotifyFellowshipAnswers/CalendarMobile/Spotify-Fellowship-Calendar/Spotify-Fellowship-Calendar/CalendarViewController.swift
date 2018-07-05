@@ -46,13 +46,13 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
+        let cell = daysCollectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
         if indexPath.item <= firstMonthWeekDay - 2 {
             cell.isHidden = true
         } else {
             let calculatedDate = indexPath.row - firstMonthWeekDay + 2
             cell.isHidden = false
-            //cell.dateLabel.text = "\(calculatedDate)"
+            cell.dateLabel.text = "\(calculatedDate)"
             if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
                 cell.isUserInteractionEnabled = false
                 //cell.dateLabel.text.backgroundColor = UIColor.lightGray
