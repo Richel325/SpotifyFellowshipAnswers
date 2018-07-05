@@ -13,6 +13,7 @@
 		0CA30F7B20E4B07F0053CBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7920E4B07F0053CBDC /* Main.storyboard */; };
 		0CA30F7D20E4B0820053CBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7C20E4B0820053CBDC /* Assets.xcassets */; };
 		0CA30F8020E4B0820053CBDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7E20E4B0820053CBDC /* LaunchScreen.storyboard */; };
+		44F1ABDD6119B73B554CBB38 /* Pods_Spotify_Fellowship_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BED2B540748E0B243F8804 /* Pods_Spotify_Fellowship_Calendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		0CA30F7C20E4B0820053CBDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CA30F7F20E4B0820053CBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA30F8120E4B0820053CBDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62216ADB897EAB20482257D3 /* Pods-Spotify-Fellowship-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Fellowship-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
+		A2C10B6B516CBBA13C59339E /* Pods-Spotify-Fellowship-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Fellowship-Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		A6BED2B540748E0B243F8804 /* Pods_Spotify_Fellowship_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify_Fellowship_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F1ABDD6119B73B554CBB38 /* Pods_Spotify_Fellowship_Calendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				0CA30F7420E4B07F0053CBDC /* Spotify-Fellowship-Calendar */,
 				0CA30F7320E4B07F0053CBDC /* Products */,
+				C9B4621EF954FD7F8959B723 /* Pods */,
+				29E997A9C768707678FD7A3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = "Spotify-Fellowship-Calendar";
 			sourceTree = "<group>";
 		};
+		29E997A9C768707678FD7A3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6BED2B540748E0B243F8804 /* Pods_Spotify_Fellowship_Calendar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B4621EF954FD7F8959B723 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62216ADB897EAB20482257D3 /* Pods-Spotify-Fellowship-Calendar.debug.xcconfig */,
+				A2C10B6B516CBBA13C59339E /* Pods-Spotify-Fellowship-Calendar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA30F8420E4B0820053CBDC /* Build configuration list for PBXNativeTarget "Spotify-Fellowship-Calendar" */;
 			buildPhases = (
+				77BB25F9A20D30FE22FFB6B9 /* [CP] Check Pods Manifest.lock */,
 				0CA30F6E20E4B07F0053CBDC /* Sources */,
 				0CA30F6F20E4B07F0053CBDC /* Frameworks */,
 				0CA30F7020E4B07F0053CBDC /* Resources */,
+				D1AD256D052D489291C44C95 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77BB25F9A20D30FE22FFB6B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spotify-Fellowship-Calendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1AD256D052D489291C44C95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CA30F6E20E4B07F0053CBDC /* Sources */ = {
@@ -282,6 +349,7 @@
 		};
 		0CA30F8520E4B0820053CBDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62216ADB897EAB20482257D3 /* Pods-Spotify-Fellowship-Calendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +368,7 @@
 		};
 		0CA30F8620E4B0820053CBDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2C10B6B516CBBA13C59339E /* Pods-Spotify-Fellowship-Calendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
