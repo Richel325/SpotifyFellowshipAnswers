@@ -7,4 +7,4 @@ Spotify New York City Technology Fellowship Program - 2018
 
 - Coding Challenge Questions
 - Calendar Mobile Project
-- Calendar Backend API
+
