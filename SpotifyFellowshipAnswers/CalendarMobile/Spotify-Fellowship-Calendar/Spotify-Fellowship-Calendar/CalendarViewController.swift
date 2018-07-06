@@ -13,6 +13,10 @@ import Foundation
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
+    
+    @IBOutlet weak var backMonthButton: UIButton!
+    
+    @IBOutlet weak var forwardMonthButton: UIButton!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var daysCollectionView: UICollectionView!
     
@@ -33,15 +37,22 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
         monthLabel.text = "\(months[currentMonthIndex - 1])  \(currentYear)"
+        firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
+        backMonthButton.isEnabled = true
+        forwardMonthButton.isEnabled = true
         
-        if currentMonthIndex == 1 && currentYear % 4 == 0 {
+        presentYear = currentYear
+        presentMonthIndex = currentMonthIndex
+        
+        
+        if currentMonthIndex == 2 && currentYear % 4 == 0 {
             numberOfDaysInAMonth[currentMonthIndex - 1] = 29
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfDaysInAMonth[currentMonthIndex] + firstMonthWeekDay
+        return numberOfDaysInAMonth[currentMonthIndex - 1] + firstMonthWeekDay - 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,7 +65,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.dateLabel.text = "\(calculatedDate)"
             if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
                 cell.isUserInteractionEnabled = false
-                cell.dateLabel.backgroundColor = UIColor.clear
+                //cell.dateLabel.backgroundColor = UIColor.clear
             } else {
                 cell.isUserInteractionEnabled = true
                 //cell.dateLabel.backgroundColor = UIColor.white
@@ -83,15 +94,15 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     //Calculate the first week day of each month
-//    func firstWeekDay() -> Int {
-//        let day = ("\(currentYear)-\(currentMonthIndex)".date?.firstDayOfMonth.weekday)
-//        return day!
-//    }
+    func firstWeekDay() -> Int {
+        let day = ("\(currentYear) - \(currentMonthIndex) - 01".date?.firstDayOfMonth.weekday)
+        return day!
+    }
 
     
     //Calculate days of the month based on the month in the months array
     func monthDidChange(monthIndex: Int, year: Int) {
-        currentMonthIndex = monthIndex
+        currentMonthIndex = monthIndex //+ 1
         currentYear = year
         
         //Account for leap years!
@@ -103,7 +114,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
         
-        //firstMonthWeekDay = firstWeekDay()
+        firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
     }
     
