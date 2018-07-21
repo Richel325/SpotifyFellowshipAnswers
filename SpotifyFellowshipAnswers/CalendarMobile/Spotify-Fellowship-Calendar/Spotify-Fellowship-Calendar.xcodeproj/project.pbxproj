@@ -13,6 +13,7 @@
 		0CA30F7B20E4B07F0053CBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7920E4B07F0053CBDC /* Main.storyboard */; };
 		0CA30F7D20E4B0820053CBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7C20E4B0820053CBDC /* Assets.xcassets */; };
 		0CA30F8020E4B0820053CBDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA30F7E20E4B0820053CBDC /* LaunchScreen.storyboard */; };
+		0CCA4FB720FC3B0200774B29 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA4FB620FC3B0200774B29 /* Event.swift */; };
 		44F1ABDD6119B73B554CBB38 /* Pods_Spotify_Fellowship_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BED2B540748E0B243F8804 /* Pods_Spotify_Fellowship_Calendar.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		0CA30F7C20E4B0820053CBDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CA30F7F20E4B0820053CBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA30F8120E4B0820053CBDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CCA4FB620FC3B0200774B29 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		62216ADB897EAB20482257D3 /* Pods-Spotify-Fellowship-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Fellowship-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		A2C10B6B516CBBA13C59339E /* Pods-Spotify-Fellowship-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Fellowship-Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify-Fellowship-Calendar/Pods-Spotify-Fellowship-Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		A6BED2B540748E0B243F8804 /* Pods_Spotify_Fellowship_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify_Fellowship_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 				0CA30F7520E4B07F0053CBDC /* AppDelegate.swift */,
 				0CA30F7720E4B07F0053CBDC /* CalendarViewController.swift */,
 				0C32C97120EDA01E005E67BC /* CalendarCollectionViewCell.swift */,
+				0CCA4FB620FC3B0200774B29 /* Event.swift */,
 				0CA30F7920E4B07F0053CBDC /* Main.storyboard */,
 				0CA30F7E20E4B0820053CBDC /* LaunchScreen.storyboard */,
 				0CA30F7C20E4B0820053CBDC /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CCA4FB720FC3B0200774B29 /* Event.swift in Sources */,
 				0C32C97220EDA01E005E67BC /* CalendarCollectionViewCell.swift in Sources */,
 				0CA30F7820E4B07F0053CBDC /* CalendarViewController.swift in Sources */,
 				0CA30F7620E4B07F0053CBDC /* AppDelegate.swift in Sources */,

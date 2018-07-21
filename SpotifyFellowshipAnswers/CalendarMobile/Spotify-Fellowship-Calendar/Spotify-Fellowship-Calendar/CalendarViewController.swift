@@ -15,10 +15,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     @IBOutlet weak var backMonthButton: UIButton!
-    
     @IBOutlet weak var forwardMonthButton: UIButton!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var daysCollectionView: UICollectionView!
+    
     
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     var numberOfDaysInAMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -33,15 +33,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentMonthIndex = Calendar.current.component(.month, from: Date())
+        currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
-        monthLabel.text = "\(months[currentMonthIndex - 1])  \(currentYear)"
-        firstMonthWeekDay = firstWeekDay()
+        monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
+        //firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
         backMonthButton.isEnabled = true
         forwardMonthButton.isEnabled = true
-        
         presentYear = currentYear
         presentMonthIndex = currentMonthIndex
         
@@ -65,10 +64,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.dateLabel.text = "\(calculatedDate)"
             if calculatedDate < todaysDate && currentMonthIndex == presentMonthIndex && currentYear == presentYear {
                 cell.isUserInteractionEnabled = false
-                //cell.dateLabel.backgroundColor = UIColor.clear
             } else {
                 cell.isUserInteractionEnabled = true
-                //cell.dateLabel.backgroundColor = UIColor.white
             }
         }
         
@@ -94,15 +91,15 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     //Calculate the first week day of each month
-    func firstWeekDay() -> Int {
-        let day = ("\(currentYear) - \(currentMonthIndex) - 01".date?.firstDayOfMonth.weekday)
-        return day!
-    }
+//    func firstWeekDay() -> Int {
+//        let day = ("\(currentYear) - \(currentMonthIndex) - 1".date?.firstDayOfMonth.weekday)
+//        return day!
+//    }
 
     
     //Calculate days of the month based on the month in the months array
     func monthDidChange(monthIndex: Int, year: Int) {
-        currentMonthIndex = monthIndex //+ 1
+        currentMonthIndex = monthIndex + 1
         currentYear = year
         
         //Account for leap years!
@@ -114,7 +111,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
         
-        firstMonthWeekDay = firstWeekDay()
+        print(firstMonthWeekDay)
+        //firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
     }
     
