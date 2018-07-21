@@ -37,22 +37,20 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
         monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
-        //firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
         backMonthButton.isEnabled = true
         forwardMonthButton.isEnabled = true
         presentYear = currentYear
         presentMonthIndex = currentMonthIndex
-        
-        
-        if currentMonthIndex == 2 && currentYear % 4 == 0 {
-            numberOfDaysInAMonth[currentMonthIndex - 1] = 29
-        }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfDaysInAMonth[currentMonthIndex - 1] + firstMonthWeekDay - 1
+        return numberOfDaysInAMonth[currentMonthIndex] + firstMonthWeekDay
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = daysCollectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
@@ -89,17 +87,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     
-    
-    //Calculate the first week day of each month
-//    func firstWeekDay() -> Int {
-//        let day = ("\(currentYear) - \(currentMonthIndex) - 1".date?.firstDayOfMonth.weekday)
-//        return day!
-//    }
 
     
     //Calculate days of the month based on the month in the months array
     func monthDidChange(monthIndex: Int, year: Int) {
-        currentMonthIndex = monthIndex + 1
+        currentMonthIndex = monthIndex
         currentYear = year
         
         //Account for leap years!
@@ -110,9 +102,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
                 numberOfDaysInAMonth[monthIndex] = 28
             }
         }
-        
-        print(firstMonthWeekDay)
-        //firstMonthWeekDay = firstWeekDay()
         daysCollectionView.reloadData()
     }
     
@@ -130,7 +119,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         
         monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
         monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
-        
+        print(firstMonthWeekDay)
     }
     
     
@@ -144,6 +133,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         monthLabel.text = "\(months[currentMonthIndex])  \(currentYear)"
         monthDidChange(monthIndex: currentMonthIndex, year: currentYear)
+        print(firstMonthWeekDay)
     }
     
     
